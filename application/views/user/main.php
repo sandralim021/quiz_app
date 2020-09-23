@@ -2,19 +2,30 @@
         <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
             <thead>
                 <th>#</th>
-                <th>Category</th>
+                <th>Topic</th>
                 <th>No. of Questions</th>
                 <th>Marks</th>
                 <th>Actions</th>
             </thead>
             <tbody>
+                <?php $i = 1;?>
+                <?php foreach($data as $row): ?>
                 <tr>
-                    <td>1</td>
-                    <td>Lorem, ipsum.</td>
-                    <td>10</td>
-                    <td>10</td>
-                    <td><button class="button is-primary">Start</button></td>
+                    <td><?php echo $i++ ?></td>
+                    <td><?php echo $row->topic_name ?></td>
+                    <td><?php echo $row->num_questions ?></td>
+                    <td>Not Yet Available</td>
+                    <td><button class="button is-primary choose">Start</button></td>
                 </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
    </div>
+<script>
+    $(document).ready(function(){
+        // Check for click events on the navbar burger icon
+        $(".choose").click(function() {
+            alert('Clicked');
+        });
+    });
+</script>

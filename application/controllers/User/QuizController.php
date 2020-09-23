@@ -4,13 +4,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class QuizController extends CI_Controller {
 
 	public function __construct(){
-		$this->load->model('User/Quiz','qm');
+		parent::__construct();
+		$this->load->model('user/quiz','qm');
 	}
+
 	public function index()
 	{	
-		
+		$data['data'] = $this->qm->get();
         $this->load->view('templates/user/header');
-        $this->load->view('user/main');
+        $this->load->view('user/main',$data);
         $this->load->view('templates/user/footer');
 	}
+
+	public function question($id){
+		
+	} 
 }
