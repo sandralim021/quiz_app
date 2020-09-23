@@ -10,4 +10,21 @@
             
             return $query->result();
         }
+
+        public function get_questions($id){
+            $questions = $this->db->select('*')
+                                ->from('questions ')
+                                ->where('topic_id',$id)
+                                ->get();
+            while($row = $questions->result()){
+                $data = array(
+                    'topic_id' => $row->topic_id,
+                    'question_id' => $row->question_id,
+                    'session_status' => '0'
+                );
+                $this->db->insert('sessions',$data);
+            }
+            
+            return true;
+        }
     }

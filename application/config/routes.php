@@ -55,4 +55,4 @@ $route['translate_uri_dashes'] = FALSE;
 
 //User Routes
 $route['main'] = 'User/QuizController/index';
-$route['question/(:any)'] = 'User/QuizController/question/$1';
+$route['get_questions/(:any)'] = 'User/QuizController/get_questions/$1';

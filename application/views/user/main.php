@@ -15,7 +15,7 @@
                     <td><?php echo $row->topic_name ?></td>
                     <td><?php echo $row->num_questions ?></td>
                     <td>Not Yet Available</td>
-                    <td><button class="button is-primary choose">Start</button></td>
+                    <td><button class="button is-primary choose" data=<?php echo $row->topic_id ?>>Start</button></td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -25,7 +25,8 @@
     $(document).ready(function(){
         // Check for click events on the navbar burger icon
         $(".choose").click(function() {
-            alert('Clicked');
+            var id = $(this).attr('data');
+            window.location.href = '<?php echo base_url() ?>get_questions/'+id;
         });
     });
 </script>

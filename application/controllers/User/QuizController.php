@@ -16,7 +16,10 @@ class QuizController extends CI_Controller {
         $this->load->view('templates/user/footer');
 	}
 
-	public function question($id){
-		
+	public function get_questions($id){
+		//$data = $this->qm->get_questions($id);
+		$this->load->view('templates/user/header');
+        $this->load->view('user/question');
+        $this->load->view('templates/user/footer');
 	} 
 }
