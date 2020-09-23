@@ -26,7 +26,7 @@
         // Check for click events on the navbar burger icon
         $(".choose").click(function() {
             var id = $(this).attr('data');
-            window.location.href = '<?php echo base_url() ?>get_questions/'+id;
+            window.location.href = '<?php echo base_url() ?>questions/'+id;
         });
     });
 </script>
