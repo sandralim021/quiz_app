@@ -123,4 +123,20 @@
 
         }
 
+        public function score($data){
+            $score = $this->db->select('*')
+                            ->from('scores')
+                            ->where('score_id',$data['score_id'])
+                            ->get();
+            $no_questions = $this->db->select('*')
+                                    ->from('questions')
+                                    ->where('topic_id',$data['topic_id'])
+                                    ->get();
+            return array(
+                'no_question' => $no_questions->num_rows(),
+                'correct' => $score->row()->correct,
+                'wrong' => $score->row()->wrong
+            );
+        }
+
     }

@@ -52,11 +52,25 @@ class QuizController extends CI_Controller {
 				$this->load->view('user/question',$data);
 				$this->load->view('templates/user/footer');
 			}else if($query['success'] == false){
-				$this->load->view('templates/user/header');
-				$this->load->view('user/score');
-				$this->load->view('templates/user/footer');
+				$data['topic_id'] = $answer['topic_id'];
+				$data['score_id'] = $answer['score_id'];
+				$this->score($data['topic_id'],$data['score_id']);
 			}
 			
 		}
+	}
+
+	public function score($topic_id,$score_id){
+			$data = array(
+				'topic_id' => $topic_id,
+				'score_id' => $score_id
+			);
+			$query = $this->qm->score($data);
+			$result['no_question'] = $query['no_question'];
+			$result['correct'] = $query['correct'];
+			$result['wrong'] = $query['wrong'];
+			$this->load->view('templates/user/header');
+			$this->load->view('user/score',$result);
+			$this->load->view('templates/user/footer');
 	}
 }
