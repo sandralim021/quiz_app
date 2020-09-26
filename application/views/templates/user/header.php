@@ -6,6 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- CSS Files -->
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/bulma/bulma.min.css">
+	<link rel="stylesheet" href="<?php echo base_url() ?>assets/font-awesome/css/all.min.css">
+	<script src="<?php echo base_url() ?>assets/font-awesome/js/all.min.js"></script>
 	<!-- JS Files -->
 	<script src="<?php echo base_url() ?>assets/jquery/jquery.min.js"></script>
     <title>Quiz App</title>
@@ -39,16 +41,32 @@
 			</div>
 
 			<div class="navbar-end">
-				<div class="navbar-item">
-					<div class="buttons">
-						<a class="button is-primary">
-							<strong>Sign up</strong>
+				<?php if ($this->session->userdata('logged_in')): ?>
+					<div class="navbar-item has-dropdown is-hoverable">
+						<a class="navbar-link">
+						<?php echo $this->session->userdata('name') ?>
 						</a>
-						<a class="button is-light">
-							Log in
-						</a>
+						<div class="navbar-dropdown">
+							<a class="navbar-item">
+								Profile
+							</a>
+							<a class="navbar-item" href="<?php echo base_url() ?>logout">
+								Logout
+							</a>
+						</div>
 					</div>
-				</div>
+				<?php else: ?>
+					<div class="navbar-item">
+						<div class="buttons">
+							<a class="button is-primary">
+								<strong>Sign up</strong>
+							</a>
+							<a class="button is-light" href="<?php echo base_url() ?>login">
+								Log in
+							</a>
+						</div>
+					</div>
+				<?php endif ?>
 			</div>
 		</div>
 	</nav>

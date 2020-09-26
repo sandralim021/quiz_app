@@ -10,6 +10,9 @@ class QuizController extends CI_Controller {
 
 	public function index()
 	{	
+		if(!$this->session->userdata('logged_in')){
+			redirect('login');
+		}
 		$data['data'] = $this->qm->get();
         $this->load->view('templates/user/header');
         $this->load->view('user/main',$data);
@@ -73,4 +76,5 @@ class QuizController extends CI_Controller {
 			$this->load->view('user/score',$result);
 			$this->load->view('templates/user/footer');
 	}
+
 }

@@ -59,3 +59,6 @@ $route['questions/(:any)'] = 'User/QuizController/questions/$1';
 $route['question_index'] = 'User/QuizController/question_index';
 $route['next_question'] = 'User/QuizController/next_question';
 $route['score'] = 'User/QuizController/score';
+$route['login'] = 'User/UserController/login';
+$route['login_user'] = 'User/UserController/login_user';
+$route['logout'] = 'User/UserController/logout';
