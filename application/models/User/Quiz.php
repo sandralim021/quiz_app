@@ -12,8 +12,11 @@
         }
 
         public function get_questions($id){
-            $question_success = true;
-            $score_success = true;
+            $data = array(
+                'score_success' => false,
+                'question_success' => false,
+                'score_id' => ''
+            );
             $questions = $this->db->select('*')
                                 ->from('questions')
                                 ->where('topic_id',$id)
@@ -27,9 +30,9 @@
                 );
                 $question_query = $this->db->insert('sessions',$data);
                 if($question_query){
-                    $question_success = true;
+                    $data['question_success'] = true;
                 }else{
-                    $question_success = false;
+                    $data['question_success']  = false;
                 }
             }
 
@@ -38,16 +41,13 @@
             );
             $score_query = $this->db->insert('scores',$topic_id);
             if($score_query){
-                $score_success = true;
+                $data['score_success'] = true;
+                $data['score_id'] = $this->db->insert_id();
             }else{
-                $score_success = false;
+                $data['score_success'] = false;
             }
 
-            if($score_success && $question_success){
-                return true;
-            }else{
-                return false;
-            }
+            return $data;
             
         }
 
@@ -83,12 +83,44 @@
                                     ->where('question_id',$question_id)
                                     ->get();
                     return array(
+                        'topic_id' => $id,
                         'question' => $question,
-                        'choices' => $choices->result()
+                        'choices' => $choices->result(),
+                        'success' => true
                     );
                 }
 
+            }else{
+                return array(
+                    'success' => false
+                );
             }
+        }
+
+        public function validate_answer($data){
+            $topic_id = $data['topic_id'];
+            $choice = $data['choice'];
+            $score_id = $data['score_id'];
+            $correct_answer = $this->db->select('*')
+                                    ->from('choices')
+                                    ->where('choice_id',$choice)
+                                    ->get();
+            $correct_row = $correct_answer->row()->answer;
+            if($correct_row == 1){
+                $correct_score = 1;
+                $this->db->set("correct", "correct + $correct_score", FALSE); 
+                $this->db->where("score_id", $score_id);
+                $this->db->update("scores");
+                return true;
+            }else if($correct_row == 0){
+                $wrong_score = 1;
+                $this->db->set("wrong", "wrong + $wrong_score", FALSE); 
+                $this->db->where("score_id", $score_id);
+                $this->db->update("scores");
+                return true;
+            }
+
+
         }
 
     }
