@@ -1,6 +1,6 @@
-    <div class="block mt-4">
+    <div class="block mt-6">
       <div class="columns is-centered">
-        <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+        <div class="column is-two-fifths">
           <form action="<?php echo base_url() ?>login_user" id="login_form" class="box">
             <div class="field">
               <label for="" class="label">Email</label>
@@ -20,14 +20,8 @@
                 </span>
               </div>
             </div>
-            <div class="field">
-              <label for="" class="checkbox">
-                <input type="checkbox">
-               Remember me
-              </label>
-            </div>
-            <div class="field">
-              <button class="button is-success">
+            <div class="field has-text-centered">
+              <button class="button is-primary">
                 Login
               </button>
             </div>

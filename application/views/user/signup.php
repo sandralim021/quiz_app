@@ -1,9 +1,7 @@
 <div class="block mt-6">
 	<div class="columns is-centered">
-		<div class="box column is-two-fifths">
-			<h3 class="title is-3 has-text-centered">SIGN UP HERE</h3>
-			<hr class="has-background-grey-lighter">
-			<form action="<?php echo base_url() ?>signup_user" method="post" id="signup_form">
+		<div class="column is-two-fifths">
+			<form action="<?php echo base_url() ?>signup_user" method="post" id="signup_form" class="box">
 				<div class="field">
 					<label class="label">Name</label>
 					<div class="control">
