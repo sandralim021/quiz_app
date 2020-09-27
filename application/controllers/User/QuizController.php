@@ -5,61 +5,54 @@ class QuizController extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
+		if(!$this->session->userdata('logged_in')){
+			redirect('login');
+		}
 		$this->load->model('user/quiz','qm');
 	}
 
 	public function index()
 	{	
-		if(!$this->session->userdata('logged_in')){
-			redirect('login');
-		}
 		$data['data'] = $this->qm->get();
         $this->load->view('templates/user/header');
         $this->load->view('user/main',$data);
         $this->load->view('templates/user/footer');
 	}
 
-	public function questions($id){
+	public function get_questions($id){
 		$data = $this->qm->get_questions($id);
 		if($data['question_success'] && $data['score_success']){
-			$this->question_index($id,$data['score_id']);
+			redirect('question/'.$id.'/'.$data['score_id']);
 		}
 	}
 	
-	public function question_index($id,$score_id){
-		$query = $this->qm->display_question($id);
-		$data['question'] = $query['question'];
-		$data['choices'] = $query['choices'];
-		$data['topic_id'] = $query['topic_id'];
-		$data['score_id'] = $score_id;
-		$this->load->view('templates/user/header');
-        $this->load->view('user/question',$data);
-		$this->load->view('templates/user/footer');
+	public function question($topic_id,$score_id){
+		$query = $this->qm->display_question($topic_id);
+		if($query['success'] == true){
+			$data['question'] = $query['question'];
+			$data['choices'] = $query['choices'];
+			$data['topic_id'] = $query['topic_id'];
+			$data['score_id'] = $score_id;
+			$data['session_id'] = $query['session_id'];
+			$this->load->view('templates/user/header');
+			$this->load->view('user/question',$data);
+			$this->load->view('templates/user/footer');
+		}else if($query['success'] == false){
+			redirect('score/'.$topic_id.'/'.$score_id);
+		}
+		
 	}
 
 	public function next_question(){
 		$answer = array(
 			'topic_id' => $this->input->post('topic_id'),
 			'choice' => $this->input->post('choice'),
-			'score_id' => $this->input->post('score_id')
+			'score_id' => $this->input->post('score_id'),
+			'session_id' => $this->input->post('session_id')
 		);
 		$validate = $this->qm->validate_answer($answer);
 		if($validate){
-			$query = $this->qm->display_question($answer['topic_id']);
-			if($query['success'] == true){
-				$data['topic_id'] = $answer['topic_id'];
-				$data['question'] = $query['question'];
-				$data['choices'] = $query['choices'];
-				$data['score_id'] = $answer['score_id'];
-				$this->load->view('templates/user/header');
-				$this->load->view('user/question',$data);
-				$this->load->view('templates/user/footer');
-			}else if($query['success'] == false){
-				$data['topic_id'] = $answer['topic_id'];
-				$data['score_id'] = $answer['score_id'];
-				$this->score($data['topic_id'],$data['score_id']);
-			}
-			
+			redirect('question/'.$answer['topic_id'].'/'.$answer['score_id']);
 		}
 	}
 

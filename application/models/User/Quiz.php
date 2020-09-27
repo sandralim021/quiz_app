@@ -12,6 +12,9 @@
         }
 
         public function get_questions($id){
+            $user_id = $this->session->userdata('user_id');
+            // Delete Previous Session
+            $this->db->delete('sessions', array('user_id' => $user_id)); 
             $data = array(
                 'score_success' => false,
                 'question_success' => false,
@@ -23,12 +26,13 @@
                                 ->get();
             
             foreach($questions->result() as $row){
-                $data = array(
+                $session_data = array(
+                    'user_id' => $user_id,
                     'topic_id' => $row->topic_id,
                     'question_id' => $row->question_id,
                     'session_status' => '0'
                 );
-                $question_query = $this->db->insert('sessions',$data);
+                $question_query = $this->db->insert('sessions',$session_data);
                 if($question_query){
                     $data['question_success'] = true;
                 }else{
@@ -36,10 +40,11 @@
                 }
             }
 
-            $topic_id = array(
+            $score_data = array(
+                'user_id' => $user_id,
                 'topic_id' => $id
             );
-            $score_query = $this->db->insert('scores',$topic_id);
+            $score_query = $this->db->insert('scores',$score_data);
             if($score_query){
                 $data['score_success'] = true;
                 $data['score_id'] = $this->db->insert_id();
@@ -66,11 +71,6 @@
             if(isset($row)){
                 $session_id = $row['session_id'];
                 $question_id = $row['question_id'];
-                
-                $this->db->set('session_status','1');
-                $this->db->where('session_id',$session_id);
-                $this->db->update('sessions');
-
                 $question_query = $this->db->select('question')
                             ->from('questions')
                             ->where('questions.question_id',$question_id)
@@ -84,6 +84,7 @@
                                     ->get();
                     return array(
                         'topic_id' => $id,
+                        'session_id' => $session_id,
                         'question' => $question,
                         'choices' => $choices->result(),
                         'success' => true
@@ -101,6 +102,12 @@
             $topic_id = $data['topic_id'];
             $choice = $data['choice'];
             $score_id = $data['score_id'];
+            $session_id = $data['session_id'];
+            //Updating Session
+            $this->db->set('session_status','1');
+            $this->db->where('session_id',$session_id);
+            $this->db->update('sessions');
+            //
             $correct_answer = $this->db->select('*')
                                     ->from('choices')
                                     ->where('choice_id',$choice)
