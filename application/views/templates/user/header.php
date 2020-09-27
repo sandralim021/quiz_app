@@ -7,13 +7,14 @@
 	<!-- CSS Files -->
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/bulma/bulma.min.css">
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/font-awesome/css/all.min.css">
+	<link rel="stylesheet" href="<?php echo base_url() ?>assets/custom/style.css">
 	<script src="<?php echo base_url() ?>assets/font-awesome/js/all.min.js"></script>
 	<!-- JS Files -->
 	<script src="<?php echo base_url() ?>assets/jquery/jquery.min.js"></script>
     <title>Quiz App</title>
 </head>
 
-<body>
+<body class="has-background-grey-lighter">
 	<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
 		<div class="navbar-brand">
 			<a class="navbar-item" href="https://bulma.io">
@@ -30,7 +31,7 @@
 
 		<div id="navbarBasicExample" class="navbar-menu">
 			<div class="navbar-start">
-				<a class="navbar-item">
+				<a class="navbar-item" href="<?php echo base_url() ?>main">
 					Home
 				</a>
 
@@ -58,7 +59,7 @@
 				<?php else: ?>
 					<div class="navbar-item">
 						<div class="buttons">
-							<a class="button is-primary">
+							<a class="button is-primary" href="<?php echo base_url() ?>signup">
 								<strong>Sign up</strong>
 							</a>
 							<a class="button is-light" href="<?php echo base_url() ?>login">

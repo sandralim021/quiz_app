@@ -6,4 +6,13 @@
             return $query->row_array();
         }
         
+        public function signup_user($data){
+           $query = $this->db->insert('users',$data);
+           if($query){
+                return $this->db->insert_id();
+            }else{
+                return false;
+            }
+        }
+    
     }

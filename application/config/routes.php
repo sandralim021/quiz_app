@@ -61,4 +61,6 @@ $route['next_question'] = 'User/QuizController/next_question';
 $route['score/(:any)/(:any)'] = 'User/QuizController/score/$1/$2';
 $route['login'] = 'User/UserController/login';
 $route['login_user'] = 'User/UserController/login_user';
+$route['signup'] = 'User/UserController/signup';
+$route['signup_user'] = 'User/UserController/signup_user';
 $route['logout'] = 'User/UserController/logout';
