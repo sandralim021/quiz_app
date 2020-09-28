@@ -68,3 +68,7 @@ $route['logout'] = 'User/UserController/logout';
 // Admin Routes
 $route['admin/quizzes'] = 'Admin/QuizController/index';
 $route['admin/quizzes/fetch'] = 'Admin/QuizController/fetch';
+$route['admin/quizzes/insert'] = 'Admin/QuizController/insert';
+$route['admin/quizzes/edit/(:any)'] = 'Admin/QuizController/edit/$1';
+$route['admin/quizzes/update/(:any)'] = 'Admin/QuizController/update/$1';
+$route['admin/quizzes/delete/(:any)'] = 'Admin/QuizController/delete/$1';
