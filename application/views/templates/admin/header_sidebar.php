@@ -6,11 +6,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- CSS Files -->
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/bulma/bulma.min.css">
+	<link rel="stylesheet" href="<?php echo base_url() ?>assets/datatables/css/datatables.min.css">
+	<link rel="stylesheet" href="<?php echo base_url() ?>assets/datatables/css/dataTables.jqueryui.min.css">
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/font-awesome/css/all.min.css">
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/custom/admin_style.css">
-	<script src="<?php echo base_url() ?>assets/font-awesome/js/all.min.js"></script>
 	<!-- JS Files -->
 	<script src="<?php echo base_url() ?>assets/jquery/jquery.min.js"></script>
+	<script src="<?php echo base_url() ?>assets/datatables/js/datatables.min.js"></script>
+	<script src="<?php echo base_url() ?>assets/datatables/js/datatables.jqueryui.min.js"></script>
+	<script src="<?php echo base_url() ?>assets/font-awesome/js/all.min.js"></script>
 	<title>Quiz App</title>
 </head>
 
@@ -62,22 +66,24 @@
 						</a>
 					</li>
 					<li>
-						<a href="#" class="is-active">
-							<span class="icon"><i class="fa fa-table"></i></span> Links
+						<a href="#" class="">
+							<span class="icon"><i class="fas fa-trophy"></i></span> Ranking
 						</a>
-
-						<ul>
-							<li>
-								<a href="#">
-									<span class="icon is-small"><i class="fa fa-link"></i></span> Link1
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<span class="icon is-small"><i class="fa fa-link"></i></span> Link2
-								</a>
-							</li>
-						</ul>
+					</li>
+					<li>
+						<a href="#" class="">
+							<span class="icon"><i class="fas fa-history"></i></span> History
+						</a>
+					</li>
+					<li>
+						<a href="#" class="">
+							<span class="icon"><i class="fas fa-list"></i></span> Quizzes
+						</a>
+					</li>
+					<li>
+						<a href="#" class="">
+							<span class="icon"><i class="fas fa-users"></i></span> Users
+						</a>
 					</li>
 					<li>
 						<a href="#" class="">
@@ -88,4 +94,5 @@
 			</aside>
 
 			<div class="container column is-10">
+			
 				

@@ -67,3 +67,4 @@ $route['logout'] = 'User/UserController/logout';
 
 // Admin Routes
 $route['admin/quizzes'] = 'Admin/QuizController/index';
+$route['admin/quizzes/fetch'] = 'Admin/QuizController/fetch';
