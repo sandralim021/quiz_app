@@ -64,3 +64,6 @@ $route['login_user'] = 'User/UserController/login_user';
 $route['signup'] = 'User/UserController/signup';
 $route['signup_user'] = 'User/UserController/signup_user';
 $route['logout'] = 'User/UserController/logout';
+
+// Admin Routes
+$route['admin/quizzes'] = 'Admin/QuizController/index';
