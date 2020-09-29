@@ -17,4 +17,35 @@
             
             return $query->result_array();
         }
+
+        public function insert_question($data){
+            $query = $this->db->insert('questions',$data);
+            if($query){
+                return $this->db->insert_id();
+            }
+        }
+
+        public function insert_options($data){
+            $query = $this->db->insert_batch('choices',$data);
+            return ($query == true) ? true : false;
+        }
+
+        public function edit($id){
+            $data = array();
+            $question = $this->db->select("*")
+                            ->from("questions")
+                            ->where("question_id",$id)
+                            ->get();
+            $data['question'] = $question->row();
+
+            $choice = $this->db->select("*")
+                            ->from("choices")
+                            ->where("question_id",$id)
+                            ->get();
+
+            foreach($choice->result() as $row){
+                $data['choices'][] = $row;
+            }
+            return $data;
+        }
     }

@@ -21,7 +21,7 @@ class QuestionController extends CI_Controller {
         foreach ($data as $key => $value) {
             // button
             $buttons = '';
-            $buttons .= '<button class="button is-warning is-small item-edit mr-1" title="Edit" data='.$value['question_id'].'><i class="fas fa-edit"></i></button>';
+            $buttons .= '<button class="button is-warning is-small mr-1 item-edit" title="Edit" data='.$value['question_id'].'><i class="fas fa-edit"></i></button>';
             $buttons .= '<button class="button is-danger is-small item-delete" title="Delete" data='.$value['question_id'].'><i class="fas fa-trash-alt"></i></button>';
             $result['data'][$key] = array(
                 $i++,
@@ -32,8 +32,41 @@ class QuestionController extends CI_Controller {
         echo json_encode($result); 
     }
 
-    public function insert($data){
-        $question = $this->input->post('question');
-        $create = $this->input->insert();
+    public function insert($id){
+        $data = array(
+            'topic_id' => $id,
+            'question' => $this->input->post('question')
+        );
+        $create = $this->qm->insert_question($data);
+        if($create != null){
+            // Insert Options
+            $choice = $this->input->post('choice');
+            $answer = $this->input->post('answer');
+
+            foreach($choice as $key => $item){
+                $insert_data[] = array(
+                    'question_id' => $create,
+                    'choice' => $item,
+                    'answer' => (!empty($answer[$key])) ? $answer[$key] : 0
+                );
+            }
+            $create_options = $this->qm->insert_options($insert_data);
+            if($create_options == true){
+                $response['success'] = true;
+                $response['messages'] = 'Succesfully created';
+            }else{
+                $response['success'] = false;
+                $response['messages'] = 'Error in the database while creating the Question information';
+            }
+        }
+
+        echo json_encode($response);
+    }
+
+    public function edit($id){
+        $query = $this->qm->edit($id);
+        $data['question'] = $query['question'];
+        $data['choices'] = $query['choices'];
+        echo json_encode($data);
     }
 }

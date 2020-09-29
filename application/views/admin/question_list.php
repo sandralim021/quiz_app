@@ -3,7 +3,7 @@
 
 	<div class="card">
 		<div class="card-header">
-			<p class="card-header-title">Questions of: <?php echo $topic->topic_name ?></p>
+			<p class="card-header-title"><?php echo $topic->topic_name ?> - Questions</p>
 		</div>
 		<div class="card-content">
 			<button href="" class="button is-primary" id="btn_add"><i class="fas fa-plus"></i>Add Record</button>
@@ -176,8 +176,6 @@
             var url = $('#question_form').attr('action');
             var data = $('#question_form').serialize();
 
-            $(".help").remove();
-
             $.ajax({
 				url: url,
 				data: data, // /converting the form data into array and sending it to server
@@ -187,27 +185,45 @@
 					dataTable.ajax.reload(null, false);
 					if (response.success === true) {
 						$(".question_modal").removeClass("is-active");
+                        $("#question_form")[0].reset();
 						$('.notification').addClass('is-success');
 						$('.notification').html(response.messages).fadeIn().delay(2000).fadeOut('slow');
 					} else {
-						if (response.messages instanceof Object) {
-							$.each(response.messages, function (index, value) {
-								var id = $("#" + index);
-								id.closest('.input')
-									.removeClass('is-success')
-									.removeClass('is-danger')
-									.addClass(value.length > 0 ? 'is-danger' :
-										'is-success');
-
-								id.after(value);
-							});
-						} else {
-							alert(response.messages);
-						}
+						alert(response.messages);
 					}
 				}
 			});
         });
+        //Edit Question
+        $('#selected_data').on('click', '.item-edit', function(){
+            var id = $(this).attr('data');
+            $('.question_modal').addClass('is-active');
+			$('.question_modal').find('.modal-card-title').text('Add New Question');
+			$('#question_form').attr('action', '<?php echo base_url(); ?>admin/questions/update/'+id);
+            $.ajax({
+                type: 'ajax',
+                method: 'get',
+                url: '<?php echo base_url() ?>admin/questions/edit/'+id,
+                async: false,
+                dataType: 'json',
+                success: function(data){
+                    $('textarea[name=question]').val(data.question.question);
+                    for(var i=0; i<data.choices.length; i++) {
+                        var obj = data.choices[i];
+                        $('input[name="choice['+i+']"]').val(obj.choice);
+                        if(obj.answer == 1){
+                            $('input[name="answer['+i+']"]').prop('checked',true);
+                        }else if(obj.answer == 0){
+                            $('input[name="answer['+i+']"]').prop('checked',false);
+                        }
+                        
+                    }
+                },
+                error: function(){
+                    alert('Could not Edit Data');
+                }
+            });
+		});
 
 
 

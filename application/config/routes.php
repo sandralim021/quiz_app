@@ -77,3 +77,4 @@ $route['admin/quizzes/delete/(:any)'] = 'Admin/QuizController/delete/$1';
 $route['admin/questions/(:any)'] = 'Admin/QuestionController/index/$1';
 $route['admin/questions/fetch/(:any)'] = 'Admin/QuestionController/fetch/$1';
 $route['admin/questions/insert/(:any)'] = 'Admin/QuestionController/insert/$1';
+$route['admin/questions/edit/(:any)'] = 'Admin/QuestionController/edit/$1';
