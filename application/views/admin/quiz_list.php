@@ -3,7 +3,7 @@
 
 	<div class="card">
 		<div class="card-header">
-			<p class="card-header-title">Header</p>
+			<p class="card-header-title">Quizzes</p>
 		</div>
 		<div class="card-content">
 			<button href="" class="button is-primary" id="btn_add"><i class="fas fa-plus"></i>Add Record</button>

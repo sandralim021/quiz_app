@@ -65,10 +65,15 @@ $route['signup'] = 'User/UserController/signup';
 $route['signup_user'] = 'User/UserController/signup_user';
 $route['logout'] = 'User/UserController/logout';
 
-// Admin Routes
+// Admin Quizzes Routes
 $route['admin/quizzes'] = 'Admin/QuizController/index';
 $route['admin/quizzes/fetch'] = 'Admin/QuizController/fetch';
 $route['admin/quizzes/insert'] = 'Admin/QuizController/insert';
 $route['admin/quizzes/edit/(:any)'] = 'Admin/QuizController/edit/$1';
 $route['admin/quizzes/update/(:any)'] = 'Admin/QuizController/update/$1';
 $route['admin/quizzes/delete/(:any)'] = 'Admin/QuizController/delete/$1';
+
+//Admin Questions Routes
+$route['admin/questions/(:any)'] = 'Admin/QuestionController/index/$1';
+$route['admin/questions/fetch/(:any)'] = 'Admin/QuestionController/fetch/$1';
+$route['admin/questions/insert/(:any)'] = 'Admin/QuestionController/insert/$1';

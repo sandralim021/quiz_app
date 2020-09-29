@@ -20,7 +20,8 @@ class QuizController extends CI_Controller {
         foreach ($data as $key => $value) {
             // button
             $buttons = '';
-            $buttons .= '<button class="button is-warning is-small mr-1 item-edit" title="Edit" data='.$value['topic_id'].'><i class="fas fa-edit"></i></button>';
+            $buttons .= '<a class ="button is-primary is-small mr-1" title="Manage Quizzes" href="'.base_url('admin/questions/'.$value['topic_id']).'"><i class="fas fa-tasks"></i></a>';
+            $buttons .= '<button class="button is-warning is-small item-edit" title="Edit" data='.$value['topic_id'].'><i class="fas fa-edit"></i></button>';
             $buttons .= '<button class="button is-danger is-small item-delete" title="Delete" data='.$value['topic_id'].'><i class="fas fa-trash-alt"></i></button>';
             if($value['topic_status'] == 'active'){
                 $status = '<span class="tag is-success">Active</span>';
