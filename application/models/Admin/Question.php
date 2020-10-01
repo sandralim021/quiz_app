@@ -48,4 +48,24 @@
             }
             return $data;
         }
+
+        public function update($data,$id){
+            $update = $this->db->update('questions', $data, array('question_id' => $id));
+            if($update){
+                $delete_choices = $this->db->delete('choices', array('question_id' => $id));
+                return ($delete_choices == true) ? true : false;
+            }else{
+                return false;
+            }
+        }
+
+        public function delete($id){
+            $delete = $this->db->delete('questions', array('question_id' => $id));
+            if($delete){
+                $delete_choices = $this->db->delete('choices', array('question_id' => $id));
+                return ($delete_choices == true) ? true : false;
+            }else{
+                return false;
+            }
+        }
     }

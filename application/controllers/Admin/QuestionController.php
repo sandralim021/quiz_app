@@ -69,4 +69,58 @@ class QuestionController extends CI_Controller {
         $data['choices'] = $query['choices'];
         echo json_encode($data);
     }
+
+    public function update($id){
+        $data = array(
+            'question' => $this->input->post('question')
+        );
+        $update = $this->qm->update($data,$id);
+        if($update == true) {
+            // Insert Options Again 
+            $choice = $this->input->post('choice');
+            $answer = $this->input->post('answer');
+
+            foreach($choice as $key => $item){
+                $insert_data[] = array(
+                    'question_id' => $id,
+                    'choice' => $item,
+                    'answer' => (!empty($answer[$key])) ? $answer[$key] : 0
+                );
+            }
+            $create_options = $this->qm->insert_options($insert_data);
+            if($create_options == true){
+                $response['success'] = true;
+                $response['messages'] = 'Succesfully Updated';
+            }else{
+                $response['success'] = false;
+                $response['messages'] = 'Error in the database while inserting the Choices information';
+            }
+        }
+        else {
+            $response['success'] = false;
+            $response['messages'] = 'Error in the database while updating the Question information';			
+        }
+        echo json_encode($response);
+
+    }
+    public function delete($id){
+        if($id){
+            $delete = $this->qm->delete($id);
+            if($delete == true) {
+                $response['success'] = true;
+                $response['messages'] = "Successfully removed";	
+            }
+            else {
+                $response['success'] = false;
+                $response['messages'] = "Error in the database while removing the Question information";
+            }
+        }
+        else {
+            $response['success'] = false;
+            $response['messages'] = "Refresh the page again!!";
+        }
+
+        echo json_encode($response);
+    }
+
 }

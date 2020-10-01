@@ -167,9 +167,15 @@
 			$('#question_form').attr('action', '<?php echo base_url('admin/questions/insert/'.$topic->topic_id); ?>');
 
 		});
+
 		//Close Modal
 		$(".question_modal .close-modal").click(function () {
 			$(".question_modal").removeClass("is-active");
+		});
+
+        //Close Delete Modal
+		$(".delete_modal .close-modal").click(function () {
+			$(".delete_modal").removeClass("is-active");
 		});
         //Save and Edit
         $('#btn_save').click(function(){
@@ -223,6 +229,39 @@
                     alert('Could not Edit Data');
                 }
             });
+		});
+        //Delete Question
+        $('#selected_data').on('click', '.item-delete', function () {
+			var id = $(this).attr('data');
+			// showing the delete modal
+			$('.delete_modal').addClass('is-active');
+			//prevent previous handler - unbind()
+			$('#btn_delete').unbind().click(function () {
+				$.ajax({
+					type: 'ajax',
+					method: 'get',
+					async: false,
+					url: '<?php echo base_url(); ?>admin/questions/delete/'+id,
+					dataType: 'json',
+					success: function (response) {
+						dataTable.ajax.reload(null, false);
+						if (response.success === true) {
+							$(".delete_modal").removeClass("is-active");
+							$('.notification').addClass('is-success');
+							$('.notification').html(response.messages).fadeIn().delay(2000).fadeOut('slow');
+
+						} else {
+							$(".delete_modal").removeClass("is-active");
+							$('.notification').addClass('is-danger');
+							$('.notification').html(response.messages).fadeIn().delay(2000).fadeOut('slow');
+						}
+					},
+					error: function () {
+						alert('Error deleting');
+					}
+				});
+				return false;
+			});
 		});
 
 
