@@ -84,3 +84,10 @@ $route['admin/questions/delete/(:any)'] = 'Admin/QuestionController/delete/$1';
 //Admin Users Routes
 $route['admin/users'] = 'Admin/UserController/index';
 $route['admin/users/fetch'] = 'Admin/UserController/fetch';
+
+//Rank and History Routes
+$route['admin/ranking/select_quiz'] = 'Admin/RankHistoryController/quiz_index';
+$route['admin/ranking/fetch_quiz'] = 'Admin/RankHistoryController/fetch_quiz';
+$route['admin/ranking/list/(:any)'] = 'Admin/RankHistoryController/rank_index/$1';
+$route['admin/ranking/fetch_rank/(:any)'] = 'Admin/RankHistoryController/fetch_rank/$1';
+$route['admin/ranking/delete_rank/(:any)'] = 'Admin/RankHistoryController/delete_rank/$1';

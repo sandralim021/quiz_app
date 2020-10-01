@@ -3,15 +3,15 @@
 
 	<div class="card">
 		<div class="card-header">
-			<p class="card-header-title">Users</p>
+			<p class="card-header-title">Ranking - Select Quiz Below</p>
 		</div>
 		<div class="card-content">
-			<table class="table is-fullwidth" id="question_data">
+			<table class="table is-fullwidth" id="quiz_data">
 				<thead>
 					<tr>
 						<th>#</th>
-						<th>Name</th>
-						<th>Email</th>
+						<th>Quiz</th>
+						<th>Options</th>
 					</tr>
 				</thead>
 				<tbody id="selected_data">
@@ -22,14 +22,14 @@
 	</div>
 	<br />
 </div>
-<script type="text/javascript">
-    $(document).ready(function(){
-        var dataTable = $('#question_data').DataTable({
+
+<script>
+    $(document).ready(function (){
+        var dataTable = $('#quiz_data').DataTable({
 			"order": [],
 			"ajax": {
-				url: "<?php echo base_url() . 'admin/users/fetch/' ?>",
+				url: "<?php echo base_url() . 'admin/ranking/fetch_quiz'; ?>",
 			}
-		});
-
+        });
     })
 </script>
