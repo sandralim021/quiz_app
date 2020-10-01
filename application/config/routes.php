@@ -80,3 +80,7 @@ $route['admin/questions/insert/(:any)'] = 'Admin/QuestionController/insert/$1';
 $route['admin/questions/edit/(:any)'] = 'Admin/QuestionController/edit/$1';
 $route['admin/questions/update/(:any)'] = 'Admin/QuestionController/update/$1';
 $route['admin/questions/delete/(:any)'] = 'Admin/QuestionController/delete/$1';
+
+//Admin Users Routes
+$route['admin/users'] = 'Admin/UserController/index';
+$route['admin/users/fetch'] = 'Admin/UserController/fetch';

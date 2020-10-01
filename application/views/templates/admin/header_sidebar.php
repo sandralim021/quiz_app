@@ -76,12 +76,12 @@
 						</a>
 					</li>
 					<li>
-						<a href="#" class="">
+						<a href="<?php echo base_url() ?>admin/quizzes" class="<?php if($this->uri->segment(2)=="quizzes" || $this->uri->segment(2)=="questions"){echo "is-active";}?>">
 							<span class="icon"><i class="fas fa-list"></i></span> Quizzes
 						</a>
 					</li>
 					<li>
-						<a href="#" class="">
+						<a href="<?php echo base_url() ?>admin/users" class="<?php if($this->uri->segment(2)=="users"){echo "is-active";}?>">
 							<span class="icon"><i class="fas fa-users"></i></span> Users
 						</a>
 					</li>
