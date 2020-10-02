@@ -96,3 +96,7 @@ $route['admin/ranking/delete_rank/(:any)'] = 'Admin/RankingController/delete_ran
 $route['admin/history'] = 'Admin/HistoryController/index';
 $route['admin/history/fetch'] = 'Admin/HistoryController/fetch';
 $route['admin/history/delete/(:any)'] = 'Admin/HistoryController/delete/$1';
+
+//Admin Auth
+$route['admin/profile'] = 'Admin/ProfileController/profile_index';
+$route['admin/login'] = 'Admin/ProfileController/login_index';

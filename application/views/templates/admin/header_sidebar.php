@@ -23,29 +23,34 @@
 
 		<nav class="navbar has-shadow">
 			<div class="container">
-				<div class="navbar-left">
+				<div class="navbar-brand">
 					<a class="navbar-item">
 						Website
 					</a>
+					<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+						data-target="navbarBasicExample">
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+					</a>
 				</div>
-				<label for="menu-toggle" class="navbar-toggle">
-					<span></span>
-					<span></span>
-					<span></span>
-				</label>
-				<input type="checkbox" id="menu-toggle" class="is-hidden" />
-				<div class="navbar-end navbar-menu">
+				<div id="navbarBasicExample" class="navbar-end navbar-menu">
 					<a class="navbar-item is-tab is-hidden-tablet">
 						<span class="icon"><i class="fa fa-home"></i></span> Home
 					</a>
-					<a class="navbar-item is-tab is-hidden-tablet">
-						<span class="icon"><i class="fa fa-table"></i></span> Links
+					<a class="navbar-item is-tab is-hidden-tablet <?php if($this->uri->segment(2)=="ranking"){echo "is-active";}?>" href="<?php echo base_url() ?>admin/ranking/select_quiz">
+						<span class="icon"><i class="fa fa-trophy"></i></span> Ranking
 					</a>
-					<a class="navbar-item is-tab is-hidden-tablet">
-						<span class="icon"><i class="fa fa-info"></i></span> About
+					<a class="navbar-item is-tab is-hidden-tablet <?php if($this->uri->segment(2)=="history"){echo "is-active";}?>" href="<?php echo base_url() ?>admin/history">
+						<span class="icon"><i class="fa fa-history"></i></span> History
 					</a>
-
-					<a class="navbar-item is-tab is-active">
+					<a class="navbar-item is-tab is-hidden-tablet <?php if($this->uri->segment(2)=="quizzes" || $this->uri->segment(2)=="questions"){echo "is-active";}?>" href="<?php echo base_url() ?>admin/quizzes">
+						<span class="icon"><i class="fa fa-list"></i></span> Quizzes
+					</a>
+					<a class="navbar-item is-tab is-hidden-tablet <?php if($this->uri->segment(2)=="users"){echo "is-active";}?>" href="<?php echo base_url() ?>admin/users">
+						<span class="icon"><i class="fa fa-users"></i></span> Users
+					</a>
+					<a class="navbar-item is-tab <?php if($this->uri->segment(2)=="profile"){echo "is-active";}?>" href="<?php echo base_url() ?>admin/profile">
 						<span class="icon"><i class="fa fa-user"></i></span>
 					</a>
 					<a class="navbar-item is-tab">
@@ -86,8 +91,8 @@
 						</a>
 					</li>
 					<li>
-						<a href="#" class="">
-							<span class="icon"><i class="fa fa-info"></i></span> About
+						<a href="<?php echo base_url() ?>admin/profile" class="<?php if($this->uri->segment(2)=="profile"){echo "is-active";}?>">
+							<span class="icon"><i class="fa fa-info"></i></span> Profile
 						</a>
 					</li>
 				</ul>
