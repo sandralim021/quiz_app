@@ -1,4 +1,5 @@
 <?php
+    date_default_timezone_set('Asia/Manila');
     class Quiz extends CI_Model{
         public function get(){
             $query = $this->db->select('topics.*, COUNT(questions.question_id) as num_questions')
@@ -44,10 +45,23 @@
                 'user_id' => $user_id,
                 'topic_id' => $id
             );
+
             $score_query = $this->db->insert('scores',$score_data);
             if($score_query){
-                $data['score_success'] = true;
                 $data['score_id'] = $this->db->insert_id();
+                $history_data = array(
+                    'user_id' => $user_id,
+                    'topic_id' => $id,
+                    'score_id' => $data['score_id'],
+                    'date' => date('Y-m-d'),
+                    'time' => date('H:i:s')
+                );
+                $history_query = $this->db->insert('history',$history_data);
+                if($history_query == true){
+                    $data['score_success'] = true;
+                }else{
+                    $data['score_success'] = false;
+                } 
             }else{
                 $data['score_success'] = false;
             }

@@ -1,5 +1,5 @@
 <?php
-    class RankHistory extends CI_Model{
+    class Ranking extends CI_Model{
         public function fetch_quiz(){
             $query = $this->db->select('*')
                             ->from('topics')

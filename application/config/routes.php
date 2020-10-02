@@ -85,9 +85,14 @@ $route['admin/questions/delete/(:any)'] = 'Admin/QuestionController/delete/$1';
 $route['admin/users'] = 'Admin/UserController/index';
 $route['admin/users/fetch'] = 'Admin/UserController/fetch';
 
-//Rank and History Routes
-$route['admin/ranking/select_quiz'] = 'Admin/RankHistoryController/quiz_index';
-$route['admin/ranking/fetch_quiz'] = 'Admin/RankHistoryController/fetch_quiz';
-$route['admin/ranking/list/(:any)'] = 'Admin/RankHistoryController/rank_index/$1';
-$route['admin/ranking/fetch_rank/(:any)'] = 'Admin/RankHistoryController/fetch_rank/$1';
-$route['admin/ranking/delete_rank/(:any)'] = 'Admin/RankHistoryController/delete_rank/$1';
+//Rank Routes
+$route['admin/ranking/select_quiz'] = 'Admin/RankingController/quiz_index';
+$route['admin/ranking/fetch_quiz'] = 'Admin/RankingController/fetch_quiz';
+$route['admin/ranking/list/(:any)'] = 'Admin/RankingController/rank_index/$1';
+$route['admin/ranking/fetch_rank/(:any)'] = 'Admin/RankingController/fetch_rank/$1';
+$route['admin/ranking/delete_rank/(:any)'] = 'Admin/RankingController/delete_rank/$1';
+
+//History Routes
+$route['admin/history'] = 'Admin/HistoryController/index';
+$route['admin/history/fetch'] = 'Admin/HistoryController/fetch';
+$route['admin/history/delete/(:any)'] = 'Admin/HistoryController/delete/$1';

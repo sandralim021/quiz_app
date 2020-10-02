@@ -66,12 +66,12 @@
 						</a>
 					</li>
 					<li>
-						<a href="#" class="">
+						<a href="<?php echo base_url() ?>admin/ranking/select_quiz" class="<?php if($this->uri->segment(2)=="ranking"){echo "is-active";}?>">
 							<span class="icon"><i class="fas fa-trophy"></i></span> Ranking
 						</a>
 					</li>
 					<li>
-						<a href="#" class="">
+						<a href="<?php echo base_url() ?>admin/history" class="<?php if($this->uri->segment(2)=="history"){echo "is-active";}?>">
 							<span class="icon"><i class="fas fa-history"></i></span> History
 						</a>
 					</li>

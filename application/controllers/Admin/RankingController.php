@@ -1,10 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class RankHistoryController extends CI_Controller{
+class RankingController extends CI_Controller{
     
     public function __construct(){
         parent::__construct();
-        $this->load->model('admin/rankhistory','rh');
+        $this->load->model('admin/ranking','rm');
     }
 
     public function quiz_index(){
@@ -15,7 +15,7 @@ class RankHistoryController extends CI_Controller{
 
     public function fetch_quiz(){
         $result = array('data' => array());
-        $data = $this->rh->fetch_quiz();
+        $data = $this->rm->fetch_quiz();
         $i = 1;
         foreach ($data as $key => $value) {
             // button
@@ -30,7 +30,7 @@ class RankHistoryController extends CI_Controller{
     }
 
     public function rank_index($id){
-        $data['topic'] = $this->rh->get_topic($id);
+        $data['topic'] = $this->rm->get_topic($id);
         $this->load->view('templates/admin/header_sidebar');
         $this->load->view('admin/rank_list',$data);
         $this->load->view('templates/admin/footer');
@@ -38,7 +38,7 @@ class RankHistoryController extends CI_Controller{
 
     public function fetch_rank($id){
         $result = array('data' => array());
-        $data = $this->rh->fetch_rank($id);
+        $data = $this->rm->fetch_rank($id);
         $i = 1;
         foreach ($data as $key => $value) {
             // button
@@ -56,7 +56,7 @@ class RankHistoryController extends CI_Controller{
 
     public function delete_rank($id){
         if($id){
-            $delete = $this->rh->delete_rank($id);
+            $delete = $this->rm->delete_rank($id);
             if($delete == true) {
                 $response['success'] = true;
                 $response['messages'] = "Successfully removed";	
