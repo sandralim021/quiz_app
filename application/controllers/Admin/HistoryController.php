@@ -29,6 +29,7 @@ class HistoryController extends CI_Controller{
                 $value['name'],
                 $value['topic_name'],
                 $value['correct'],
+                $value['wrong'],
                 $date,
                 $time,
                 $buttons

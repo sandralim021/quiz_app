@@ -11,7 +11,8 @@
 						<th>#</th>
 						<th>Name</th>
 						<th>Quiz Taken</th>
-						<th>Score</th>
+						<th>Correct</th>
+						<th>Wrong</th>
                         <th>Date</th>
                         <th>Time</th>
 						<th>Options</th>

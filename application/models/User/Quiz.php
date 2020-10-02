@@ -19,7 +19,8 @@
             $data = array(
                 'score_success' => false,
                 'question_success' => false,
-                'score_id' => ''
+                'score_id' => '',
+                'history_id' => ''
             );
             $questions = $this->db->select('*')
                                 ->from('questions')
@@ -40,32 +41,39 @@
                     $data['question_success']  = false;
                 }
             }
-
-            $score_data = array(
-                'user_id' => $user_id,
-                'topic_id' => $id
-            );
-
-            $score_query = $this->db->insert('scores',$score_data);
-            if($score_query){
-                $data['score_id'] = $this->db->insert_id();
-                $history_data = array(
-                    'user_id' => $user_id,
-                    'topic_id' => $id,
-                    'score_id' => $data['score_id'],
-                    'date' => date('Y-m-d'),
-                    'time' => date('H:i:s')
+            $check_query = $this->db->query("SELECT * FROM scores WHERE topic_id = $id AND user_id = $user_id");
+            if($check_query->num_rows() > 0){
+                $data['score_id'] = $check_query->row()->score_id;
+                $reset_score = array(
+                    'correct' => 0,
+                    'wrong' => 0
                 );
-                $history_query = $this->db->insert('history',$history_data);
-                if($history_query == true){
-                    $data['score_success'] = true;
-                }else{
-                    $data['score_success'] = false;
-                } 
+                $this->db->where('score_id', $data['score_id']);
+                $this->db->update('scores', $reset_score);
+            }else{
+                $score_data = array(
+                    'user_id' => $user_id,
+                    'topic_id' => $id
+                );
+                $this->db->insert('scores',$score_data);
+                $data['score_id'] = $this->db->insert_id();
+            }
+            // Inserting History
+            $history_data = array(
+                'user_id' => $user_id,
+                'topic_id' => $id,
+                'correct' => 0,
+                'wrong' => 0,
+                'date' => date('Y-m-d'),
+                'time' => date('H:i:s')
+            );
+            $history_query = $this->db->insert('history',$history_data);
+            if($history_query){
+                $data['history_id'] = $this->db->insert_id();
+                $data['score_success'] = true;
             }else{
                 $data['score_success'] = false;
-            }
-
+            } 
             return $data;
             
         }
@@ -117,6 +125,7 @@
             $choice = $data['choice'];
             $score_id = $data['score_id'];
             $session_id = $data['session_id'];
+            $history_id = $data['history_id'];
             //Updating Session
             $this->db->set('session_status','1');
             $this->db->where('session_id',$session_id);
@@ -132,12 +141,20 @@
                 $this->db->set("correct", "correct + $correct_score", FALSE); 
                 $this->db->where("score_id", $score_id);
                 $this->db->update("scores");
+                //Update History
+                $this->db->set("correct", "correct + $correct_score", FALSE); 
+                $this->db->where("history_id", $history_id);
+                $this->db->update("history");
                 return true;
             }else if($correct_row == 0){
                 $wrong_score = 1;
                 $this->db->set("wrong", "wrong + $wrong_score", FALSE); 
                 $this->db->where("score_id", $score_id);
                 $this->db->update("scores");
+                //Update History
+                $this->db->set("wrong", "wrong + $wrong_score", FALSE); 
+                $this->db->where("history_id", $history_id);
+                $this->db->update("history");
                 return true;
             }
 

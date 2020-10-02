@@ -56,9 +56,9 @@ $route['translate_uri_dashes'] = FALSE;
 //User Routes
 $route['main'] = 'User/QuizController/index';
 $route['get_questions/(:any)'] = 'User/QuizController/get_questions/$1';
-$route['question/(:any)/(:any)'] = 'User/QuizController/question/$1/$2';
+$route['question/(:any)'] = 'User/QuizController/question/$1';
 $route['next_question'] = 'User/QuizController/next_question';
-$route['score/(:any)/(:any)'] = 'User/QuizController/score/$1/$2';
+$route['score/(:any)'] = 'User/QuizController/score/$1';
 $route['login'] = 'User/UserController/login';
 $route['login_user'] = 'User/UserController/login_user';
 $route['signup'] = 'User/UserController/signup';

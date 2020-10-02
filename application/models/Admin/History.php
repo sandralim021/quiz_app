@@ -2,12 +2,12 @@
     class History extends CI_Model{
         
         public function fetch(){
-            $query = $this->db->select('history.*, users.name, topics.topic_name, scores.correct')
+            $query = $this->db->select('history.*, users.name, topics.topic_name')
                             ->from('history')
                             ->join('users','history.user_id = users.user_id')
                             ->join('topics','history.topic_id = topics.topic_id')
-                            ->join('scores','history.score_id = scores.score_id')
-                            ->order_by('history.date desc','history.time desc')
+                            ->order_by('date','DESC')
+                            ->order_by('time','DESC')
                             ->get();
 
             return $query->result_array();
