@@ -4,6 +4,9 @@ class HistoryController extends CI_Controller{
 
     public function __construct(){
         parent::__construct();
+        if(!$this->session->userdata('admin_logged_in')){
+			redirect('admin/login');
+		}
         $this->load->model('admin/history','hm');
     }
 

@@ -35,7 +35,7 @@
 					</a>
 				</div>
 				<div id="navbarBasicExample" class="navbar-end navbar-menu">
-					<a class="navbar-item is-tab is-hidden-tablet">
+					<a class="navbar-item is-tab is-hidden-tablet <?php if($this->uri->segment(2)=="home"){echo "is-active";}?>" href="<?php echo base_url() ?>admin/home">
 						<span class="icon"><i class="fa fa-home"></i></span> Home
 					</a>
 					<a class="navbar-item is-tab is-hidden-tablet <?php if($this->uri->segment(2)=="ranking"){echo "is-active";}?>" href="<?php echo base_url() ?>admin/ranking/select_quiz">
@@ -51,9 +51,9 @@
 						<span class="icon"><i class="fa fa-users"></i></span> Users
 					</a>
 					<a class="navbar-item is-tab <?php if($this->uri->segment(2)=="profile"){echo "is-active";}?>" href="<?php echo base_url() ?>admin/profile">
-						<span class="icon"><i class="fa fa-user"></i></span>
+						<?php echo $this->session->userdata('admin_name') ?>
 					</a>
-					<a class="navbar-item is-tab">
+					<a class="navbar-item is-tab" href="<?php echo base_url() ?>admin/logout">
 						<span class="icon"><i class="fas fa-sign-out-alt"></i></span>
 					</a>
 				</div>
@@ -66,7 +66,7 @@
 				<p class="menu-label is-hidden-touch">Navigation</p>
 				<ul class="menu-list">
 					<li>
-						<a href="#" class="">
+						<a href="<?php echo base_url() ?>admin/home" class="<?php if($this->uri->segment(2)=="home"){echo "is-active";}?>">
 							<span class="icon"><i class="fa fa-home"></i></span> Home
 						</a>
 					</li>

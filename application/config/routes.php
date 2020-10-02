@@ -98,5 +98,9 @@ $route['admin/history/fetch'] = 'Admin/HistoryController/fetch';
 $route['admin/history/delete/(:any)'] = 'Admin/HistoryController/delete/$1';
 
 //Admin Auth
+$route['admin/login'] = 'Admin/LoginController/login_index';
+$route['admin/login_user'] = 'Admin/LoginController/login_user';
+$route['admin/home'] = 'Admin/HomeController/index';
 $route['admin/profile'] = 'Admin/ProfileController/profile_index';
-$route['admin/login'] = 'Admin/ProfileController/login_index';
+$route['admin/update_profile/(:any)'] = 'Admin/ProfileController/update_profile/$1';
+$route['admin/logout'] = 'Admin/LoginController/logout';

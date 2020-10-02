@@ -37,7 +37,9 @@ class UserController extends CI_Controller{
     }
 
     public function logout(){
-        $this->session->sess_destroy();
+        //Unset User Session
+        $user_session = array('name','user_id','email','password','logged_in');
+        $this->session->unset_userdata($user_session);
         redirect('login'); 
     }
 
