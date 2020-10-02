@@ -65,6 +65,11 @@ $route['signup'] = 'User/UserController/signup';
 $route['signup_user'] = 'User/UserController/signup_user';
 $route['logout'] = 'User/UserController/logout';
 
+//History Routes
+$route['history'] = 'User/HistoryController/index';
+//Ranking Routes
+$route['ranking/select_quiz'] = 'User/RankingController/quiz_index';
+$route['ranking/list/(:any)'] = 'User/RankingController/rank_index/$1';
 // Admin Quizzes Routes
 $route['admin/quizzes'] = 'Admin/QuizController/index';
 $route['admin/quizzes/fetch'] = 'Admin/QuizController/fetch';

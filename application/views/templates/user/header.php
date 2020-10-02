@@ -11,14 +11,14 @@
 	<script src="<?php echo base_url() ?>assets/font-awesome/js/all.min.js"></script>
 	<!-- JS Files -->
 	<script src="<?php echo base_url() ?>assets/jquery/jquery.min.js"></script>
-    <title>Quiz App</title>
+	<title>Quiz App</title>
 </head>
 
 <body class="has-background-grey-lighter">
 	<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
 		<div class="navbar-brand">
-			<a class="navbar-item" href="https://bulma.io">
-				<img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+			<a class="navbar-item" href="<?php echo base_url() ?>main">
+				<b>QUIZ APP</b>
 			</a>
 
 			<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
@@ -31,11 +31,15 @@
 
 		<div id="navbarBasicExample" class="navbar-menu">
 			<div class="navbar-start">
-				<a class="navbar-item" href="<?php echo base_url() ?>main">
+				<a class="navbar-item <?php if($this->uri->segment(1)=="main"){echo "is-active";} ?>" href="<?php echo base_url() ?>main">
 					Home
 				</a>
 
-				<a class="navbar-item">
+				<a class="navbar-item <?php if($this->uri->segment(1)=="history"){echo "is-active";} ?>" href="<?php echo base_url() ?>history">
+					History
+				</a>
+
+				<a class="navbar-item <?php if($this->uri->segment(1)=="ranking"){echo "is-active";} ?>" href="<?php echo base_url() ?>ranking/select_quiz">
 					Ranking
 				</a>
 
@@ -43,33 +47,32 @@
 
 			<div class="navbar-end">
 				<?php if ($this->session->userdata('logged_in')): ?>
-					<div class="navbar-item has-dropdown is-hoverable">
-						<a class="navbar-link">
+				<div class="navbar-item has-dropdown is-hoverable">
+					<a class="navbar-link">
 						<?php echo $this->session->userdata('name') ?>
+					</a>
+					<div class="navbar-dropdown">
+						<a class="navbar-item">
+							Profile
 						</a>
-						<div class="navbar-dropdown">
-							<a class="navbar-item">
-								Profile
-							</a>
-							<a class="navbar-item" href="<?php echo base_url() ?>logout">
-								Logout
-							</a>
-						</div>
+						<a class="navbar-item" href="<?php echo base_url() ?>logout">
+							Logout
+						</a>
 					</div>
+				</div>
 				<?php else: ?>
-					<div class="navbar-item">
-						<div class="buttons">
-							<a class="button is-primary" href="<?php echo base_url() ?>signup">
-								<strong>Sign up</strong>
-							</a>
-							<a class="button is-light" href="<?php echo base_url() ?>login">
-								Log in
-							</a>
-						</div>
+				<div class="navbar-item">
+					<div class="buttons">
+						<a class="button is-primary" href="<?php echo base_url() ?>signup">
+							<strong>Sign up</strong>
+						</a>
+						<a class="button is-light" href="<?php echo base_url() ?>login">
+							Log in
+						</a>
 					</div>
+				</div>
 				<?php endif ?>
 			</div>
 		</div>
 	</nav>
-    <div class="container">
-    
+	<div class="container">
