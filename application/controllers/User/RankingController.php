@@ -12,15 +12,17 @@ class RankingController extends CI_Controller {
     }
     
     public function quiz_index(){
+        $title['title'] = "RANKING";
         $data['data'] = $this->rm->fetch_quiz();
-        $this->load->view('templates/user/header');
+        $this->load->view('templates/user/header',$title);
         $this->load->view('user/select_quiz',$data);
         $this->load->view('templates/user/footer');
     }
 
     public function rank_index($id){
+        $title['title'] = "RANKING";
         $data['data'] = $this->rm->fetch_rank($id);
-        $this->load->view('templates/user/header');
+        $this->load->view('templates/user/header',$title);
         $this->load->view('user/rank_list',$data);
         $this->load->view('templates/user/footer');
     }

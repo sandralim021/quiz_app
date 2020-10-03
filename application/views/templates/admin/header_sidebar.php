@@ -15,7 +15,7 @@
 	<script src="<?php echo base_url() ?>assets/datatables/js/datatables.min.js"></script>
 	<script src="<?php echo base_url() ?>assets/datatables/js/datatables.jqueryui.min.js"></script>
 	<script src="<?php echo base_url() ?>assets/font-awesome/js/all.min.js"></script>
-	<title>Quiz App</title>
+	<title>QUIZ APP ADMIN | <?php echo $title; ?></title>
 </head>
 
 <body>

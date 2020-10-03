@@ -11,7 +11,8 @@ class ProfileController extends CI_Controller {
     }
     //Profile Index
     public function profile_index(){
-        $this->load->view('templates/admin/header_sidebar');
+        $title['title'] = "PROFILE";
+        $this->load->view('templates/admin/header_sidebar',$title);
         $this->load->view('admin/view_profile');
         $this->load->view('templates/admin/footer');
     }

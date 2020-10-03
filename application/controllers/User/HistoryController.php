@@ -13,7 +13,8 @@ class HistoryController extends CI_Controller {
     
     public function index(){
         $data['data'] = $this->hm->fetch();
-        $this->load->view('templates/user/header');
+        $title['title'] = "HISTORY";
+        $this->load->view('templates/user/header',$title);
         $this->load->view('user/history',$data);
         $this->load->view('templates/user/footer');
     }

@@ -11,7 +11,8 @@ class QuizController extends CI_Controller {
     }
 
     public function index(){
-        $this->load->view('templates/admin/header_sidebar');
+        $title['title'] = "QUIZ";
+        $this->load->view('templates/admin/header_sidebar',$title);
         $this->load->view('admin/quiz_list');
         $this->load->view('templates/admin/footer');
     }

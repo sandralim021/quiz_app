@@ -12,7 +12,8 @@ class UserController extends CI_Controller{
         if($this->session->userdata('logged_in')){
 			redirect('main');
 		}else{
-            $this->load->view('templates/user/header');
+            $title['title'] = "LOGIN";
+            $this->load->view('templates/user/header',$title);
 		    $this->load->view('user/login');
 		    $this->load->view('templates/user/footer');
         }
@@ -85,7 +86,8 @@ class UserController extends CI_Controller{
     }
 
     public function profile(){
-        $this->load->view('templates/user/header');
+        $title['title'] = "PROFILE";
+        $this->load->view('templates/user/header',$title);
         $this->load->view('user/profile');
         $this->load->view('templates/user/footer');
     }

@@ -10,7 +10,8 @@ class HomeController extends CI_Controller {
     }
 
     public function index(){
-        $this->load->view('templates/admin/header_sidebar');
+        $title['title'] = "HOME";
+        $this->load->view('templates/admin/header_sidebar',$title);
         $this->load->view('admin/home');
         $this->load->view('templates/admin/footer');
     }

@@ -12,9 +12,10 @@ class QuizController extends CI_Controller {
 	}
 
 	public function index()
-	{	
+	{
+		$title['title'] = "HOME";	
 		$data['data'] = $this->qm->get();
-        $this->load->view('templates/user/header');
+        $this->load->view('templates/user/header',$title);
         $this->load->view('user/main',$data);
         $this->load->view('templates/user/footer');
 	}
@@ -39,7 +40,8 @@ class QuizController extends CI_Controller {
 			$data['question'] = $query['question'];
 			$data['choices'] = $query['choices'];
 			$data['session_id'] = $query['session_id'];
-			$this->load->view('templates/user/header');
+			$title['title'] = "QUIZ";
+			$this->load->view('templates/user/header',$title);
 			$this->load->view('user/question',$data);
 			$this->load->view('templates/user/footer');
 		}else if($query['success'] == false){
@@ -74,7 +76,8 @@ class QuizController extends CI_Controller {
 				$result['no_question'] = $query['no_question'];
 				$result['correct'] = $query['correct'];
 				$result['wrong'] = $query['wrong'];
-				$this->load->view('templates/user/header');
+				$title['title'] = "SCORE";
+				$this->load->view('templates/user/header',$title);
 				$this->load->view('user/score',$result);
 				$this->load->view('templates/user/footer');
 			}

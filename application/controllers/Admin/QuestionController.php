@@ -11,8 +11,9 @@ class QuestionController extends CI_Controller {
     }
 
     public function index($id){
+        $title['title'] = "QUESTIONS";
         $data['topic'] = $this->qm->get_topic($id);
-        $this->load->view('templates/admin/header_sidebar');
+        $this->load->view('templates/admin/header_sidebar',$title);
         $this->load->view('admin/question_list',$data);
         $this->load->view('templates/admin/footer');
     }

@@ -11,7 +11,8 @@ class UserController extends CI_Controller {
     }
 
     public function index(){
-        $this->load->view('templates/admin/header_sidebar');
+        $title['title'] = "USERS";
+        $this->load->view('templates/admin/header_sidebar',$title);
         $this->load->view('admin/user_list');
         $this->load->view('templates/admin/footer');
     }

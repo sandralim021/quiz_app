@@ -11,7 +11,8 @@ class RankingController extends CI_Controller{
     }
 
     public function quiz_index(){
-        $this->load->view('templates/admin/header_sidebar');
+        $title['title'] = "RANKING";
+        $this->load->view('templates/admin/header_sidebar',$title);
         $this->load->view('admin/select_quiz');
         $this->load->view('templates/admin/footer');
     }
@@ -33,8 +34,9 @@ class RankingController extends CI_Controller{
     }
 
     public function rank_index($id){
+        $title['title'] = "RANKING";
         $data['topic'] = $this->rm->get_topic($id);
-        $this->load->view('templates/admin/header_sidebar');
+        $this->load->view('templates/admin/header_sidebar',$title);
         $this->load->view('admin/rank_list',$data);
         $this->load->view('templates/admin/footer');
     }

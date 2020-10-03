@@ -11,7 +11,7 @@
 	<script src="<?php echo base_url() ?>assets/font-awesome/js/all.min.js"></script>
 	<!-- JS Files -->
 	<script src="<?php echo base_url() ?>assets/jquery/jquery.min.js"></script>
-	<title>Quiz App | Admin Login</title>
+	<title>QUIZ APP ADMIN</title>
 </head>
 <body>
 	<div class="container">
