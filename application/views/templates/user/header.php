@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="has-background-grey-lighter">
 
 <head>
 	<meta charset="UTF-8">
@@ -14,7 +14,7 @@
 	<title>Quiz App</title>
 </head>
 
-<body class="has-background-grey-lighter">
+<body>
 	<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
 		<div class="navbar-brand">
 			<a class="navbar-item" href="<?php echo base_url() ?>main">
@@ -52,7 +52,7 @@
 						<?php echo $this->session->userdata('name') ?>
 					</a>
 					<div class="navbar-dropdown">
-						<a class="navbar-item">
+						<a class="navbar-item <?php if($this->uri->segment(1)=="profile"){echo "is-active";} ?>" href="<?php echo base_url() ?>profile">
 							Profile
 						</a>
 						<a class="navbar-item" href="<?php echo base_url() ?>logout">

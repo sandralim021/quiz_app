@@ -14,5 +14,11 @@
                 return false;
             }
         }
+
+        public function update_profile($data,$id){
+            $update = $this->db->where('user_id', $id)
+                                ->update('users', $data);
+            return ($update == true) ? true : false;
+        }
     
     }
