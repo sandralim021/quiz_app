@@ -21,7 +21,9 @@ class RankingController extends CI_Controller {
 
     public function rank_index($id){
         $title['title'] = "RANKING";
-        $data['data'] = $this->rm->fetch_rank($id);
+        $query = $this->rm->fetch_rank($id);
+        $data['data'] = $query['data'];
+        $data['topic_name'] = $query['topic_name'];
         $this->load->view('templates/user/header',$title);
         $this->load->view('user/rank_list',$data);
         $this->load->view('templates/user/footer');

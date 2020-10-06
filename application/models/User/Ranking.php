@@ -19,6 +19,13 @@
                             ->order_by('scores.correct','DESC')
                             ->get();
 
-            return $query->result();
+            $topic = $this->db->select('*')
+                            ->from('topics')
+                            ->where('topic_id',$id)
+                            ->get();
+            $data['data'] = $query->result();
+            $data['topic_name'] = $topic->row()->topic_name;
+
+            return $data;
         }
     }

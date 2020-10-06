@@ -1,4 +1,7 @@
-<div class="block mt-4">
+<div class="block mt-5">
+            <div class="box">
+                <h3 class="title is-5 has-text-centered">Ranking - <?php echo $topic_name ?></h3>
+            </div>
         <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
             <thead>
                 <th>#</th>
