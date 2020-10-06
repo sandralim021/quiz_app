@@ -162,6 +162,8 @@
 
         //Add New
 		$('#btn_add').click(function () {
+            $(".help").remove();
+			$("#question_form")[0].reset();
 			$('.question_modal').addClass('is-active');
 			$('.question_modal').find('.modal-card-title').text('Add New Question');
 			$('#question_form').attr('action', '<?php echo base_url('admin/questions/insert/'.$topic->topic_id); ?>');
@@ -170,6 +172,8 @@
 
 		//Close Modal
 		$(".question_modal .close-modal").click(function () {
+            $(".help").remove();
+			$("#question_form")[0].reset();
 			$(".question_modal").removeClass("is-active");
 		});
 
@@ -190,8 +194,9 @@
 				success: function (response) {
 					dataTable.ajax.reload(null, false);
 					if (response.success === true) {
+                        $(".help").remove();
+			            $("#question_form")[0].reset();
 						$(".question_modal").removeClass("is-active");
-                        $("#question_form")[0].reset();
 						$('.notification').addClass('is-success');
 						$('.notification').html(response.messages).fadeIn().delay(2000).fadeOut('slow');
 					} else {

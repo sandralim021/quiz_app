@@ -101,6 +101,8 @@
 		});
 		//Add New
 		$('#btn_add').click(function () {
+			$(".help").remove();
+			$("#topic_form")[0].reset();
 			$('.quiz_modal').addClass('is-active');
 			$('.quiz_modal').find('.modal-card-title').text('Add New Quiz');
 			$('#topic_form').attr('action', '<?php echo base_url(); ?>admin/quizzes/insert');
@@ -108,6 +110,8 @@
 		});
 		//Close Modal
 		$(".quiz_modal .close-modal").click(function () {
+			$(".help").remove();
+			$("#topic_form")[0].reset();
 			$(".quiz_modal").removeClass("is-active");
 		});
 
@@ -131,6 +135,8 @@
 				success: function (response) {
 					dataTable.ajax.reload(null, false);
 					if (response.success === true) {
+						$(".help").remove();
+						$("#topic_form")[0].reset();
 						$(".quiz_modal").removeClass("is-active");
 						$('.notification').addClass('is-success');
 						$('.notification').html(response.messages).fadeIn().delay(2000).fadeOut('slow');
