@@ -52,7 +52,8 @@ class UserController extends CI_Controller{
         if($this->session->userdata('logged_in')){
 			redirect('main');
 		}else{
-            $this->load->view('templates/user/header');
+            $title['title'] = "SIGN UP";
+            $this->load->view('templates/user/header',$title);
             $this->load->view('user/signup');
             $this->load->view('templates/user/footer');
         }

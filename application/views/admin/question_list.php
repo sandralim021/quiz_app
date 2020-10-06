@@ -209,7 +209,7 @@
         $('#selected_data').on('click', '.item-edit', function(){
             var id = $(this).attr('data');
             $('.question_modal').addClass('is-active');
-			$('.question_modal').find('.modal-card-title').text('Add New Question');
+			$('.question_modal').find('.modal-card-title').text('Edit Question');
 			$('#question_form').attr('action', '<?php echo base_url(); ?>admin/questions/update/'+id);
             $.ajax({
                 type: 'ajax',
