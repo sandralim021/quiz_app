@@ -23,3 +23,16 @@ This project is developed by Bulma, Jquery and Codeigniter 3 Framework.
 ![User - Ranking (List)](sceenshots/user/07.%20Ranking%20-%20List.PNG)
 ### User - Profile Information
 ![User - Profile Information](sceenshots/user/08.%20User%20Profile%20Information.PNG)
+
+## Admin - Login
+![Admin - Login](sceenshots/admin/01.%20Login.PNG)
+## Admin - Home
+![Admin - Home](sceenshots/admin/02.%20Home.PNG)
+## Admin - Ranking (Select Quiz)
+![Admin - Ranking (Select Quiz)](sceenshots/admin/03.%20Ranking%20-%20Select%20Quiz.PNG)
+## Admin - Ranking (List)
+![Admin - Ranking (List)](sceenshots/admin/04.%20Ranking%20-%20List.PNG)
+## Admin - History
+![Admin - History](sceenshots/admin/05.%20History.PNG)
+## Admin - Quizzes (List)
+![Admin - Quizzes (List)](master/sceenshots/admin/06.%20Quizzes.PNG)
