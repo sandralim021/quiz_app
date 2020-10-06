@@ -35,4 +35,10 @@ This project is developed by Bulma, Jquery and Codeigniter 3 Framework.
 ## Admin - History
 ![Admin - History](sceenshots/admin/05.%20History.PNG)
 ## Admin - Quizzes (List)
-![Admin - Quizzes (List)](master/sceenshots/admin/06.%20Quizzes.PNG)
+![Admin - Quizzes (List)](sceenshots/admin/06.%20Quizzes.PNG)
+## Admin - Quizzes (Questions)
+![Admin - Quizzes (Questions)](sceenshots/admin/07.%20Questions.PNG)
+## Admin - Users
+![Admin - Users](sceenshots/admin/08.%20Users.PNG)
+## Admin - Profile
+![Admin - Profile](sceenshots/admin/09.%20Profile.PNG)
