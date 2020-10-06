@@ -1,8 +1,7 @@
 ## Online Quiz Application
 A simple online quiz application where users will answer questions based on selected quiz and after a quiz, a scoreboard will appear. Aside from quiz, a user can view their quiz history and also the ranking on each quiz. The Admin can create, view, edit and delete quiz as well as managing ranks, history and viewing registered users.
 
-## Programming Languages
-This project is developed by Bulma, Jquery and Codeigniter 3 Framework.
+I built this using Bulma, Jquery and Codeigniter 3 Framework.
 
 ## Screenshots
 ### User - Login
