@@ -4,6 +4,18 @@ A simple online quiz application where users will answer questions based on sele
 ## Programming Technologies
 This project is built using Bulma, Jquery and Codeigniter 3 Framework.
 
+## Installation
+* Clone the repo ` https://github.com/sandralim021/quiz_app.git ` or download it.
+* Upload this project files and folders to your server.
+* Create database to your server and import `quiz_app.sql` file from `database` folder
+* Open the `application/config/database.php` file and set your database settings.
+* <b>Note: </b> If you want to rename the folder, Open the `application/config/config.php` file and set your base URL.
+* Done! Now you can run the website!
+
+## Credentials For Admin
+Email: admin@gmail.com
+Password: admin123
+
 ## Screenshots
 ### User - Login
 ![User - Login](sceenshots/user/01.%20Login.PNG)
