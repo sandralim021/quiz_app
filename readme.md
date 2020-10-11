@@ -13,7 +13,7 @@ This project is built using Bulma, Jquery and Codeigniter 3 Framework.
 * Done! Now you can run the website!
 
 ## Credentials For Admin
-Email: admin@gmail.com
+Email: admin@gmail.com\
 Password: admin123
 
 ## Screenshots
